@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = no"/>
+<title>网址导航</title>
+<link rel="stylesheet" type="text/css" href="style.css?v=1" />
+</head>
+<body>
+
+
+<div id="menu">
+  <button id="btn_fetch_data">下载gist数据</button>
+  <button id="btn_fetch_data_show">读取所有chrome.storage.local数据</button>
+  <button id="clear">删除所有chrome.storage.local所有</button>
+  <button id="btn_edit_all">编辑网址json</button>
+  <button id="btn_save_edit">按代码编辑</button>
+  <button id="upload">把本地所有网址json上传至github</button>
+  <button id="edit_system_settings">导航系统配置</button>
+</div>
+<div class="yt search-wrap">
+    <input type="text" class="yt-f1 ipt-baidu" id="ipt_text" autofocus>
+    <button class="btn-bing" id="btn_bing">必应</button>
+    <button class="btn-blue" id="btn_baidu">百度一下</button>
+</div>
+
+<div id="ctx"></div>
+
+<!-- 
+模版<div class="box-wrap">
+      <div class="panel-head">常用</div>
+      <div class="panel-body">
+            <a href="" class="link-item">apizza</a>
+            <a href="https://www.x.com/" target="_blank" class="link-item"><img src="https://stat2.png" alt="" class="link-item-favicon">npm官网</a>
+      </div>
+</div>
+-->
+
+
+<div id="popicon" class="popicon">菜单</div>
+<div id="gopage" class="gopage">...</div>
+
+<script src="handlehome.js"></script>
+
+</body>
+</html>

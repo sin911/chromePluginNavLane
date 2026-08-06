@@ -1,0 +1,21 @@
+{
+  "name": "喵~网址导航条",
+  "description": "网址大全",
+  "version": "1.1",
+  "homepage_url": "https://maolihui.com",
+  "manifest_version": 3,
+  "icons": {
+    "128": "img/128.png",
+    "48": "img/48.png",
+    "16": "img/16.png"
+  }, 
+  "background": {
+    "service_worker": "bg.js",
+    "type": "module"
+  },
+  "chrome_url_overrides": {  
+    "newtab": "home.html"  
+  },
+  "permissions": ["tabs","storage"],
+  "host_permissions": ["https://api.github.com/*"]
+}
