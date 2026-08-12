@@ -1,18 +1,16 @@
-//var isCatNewTab = false; // 用来标记是否是新标签页  
-
 // 监听新标签页的创建  
 chrome.tabs.onCreated.addListener(function (tab) {
-  // 标记此事件是由新建标签页触发的  
-  // isCatNewTab = true;
-  if (tab.pendingUrl === 'chrome://newtab/') {
-    // chrome.tabs.update(tab.id, {
-    //   url: chrome.runtime.getURL('webnav/work.html')
-    // });
-  }
-
-  //chrome.tabs.create({ "url": "webnav/work.html" });
-
+  /*  
+   const url = tab.pendingUrl ?? tab.url;
+    if (url === 'chrome://newtab/') {
+      chrome.tabs.update(tab.id, {
+        url: chrome.runtime.getURL('home.html')
+      });
+    } 
+      */
 });
+
+//不要在onCreated事件中使用chrome.tabs.create({ "url": "webnav/work.html" });会造成死循环
 
 // 监听标签页的更新  
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
@@ -25,4 +23,15 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
   //   });
   // }
 
+});
+
+chrome.runtime.onStartup.addListener(async () => {
+  /*   const tabs = await chrome.tabs.query({
+      url: "chrome://newtab/"
+    });
+    for (const tab of tabs) {
+      chrome.tabs.update(tab.id, {
+        url: chrome.runtime.getURL("home.html")
+      });
+    } */
 });

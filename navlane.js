@@ -120,20 +120,9 @@ function render(data) {
 }
 
 
-!async function(){
-var hasSettings = await loadSystemSettings()
-if (hasSettings) {
-  updateGopageText()
-  var { [storageKey()]: data } = await chrome.storage.local.get([storageKey()]);
-  console.log('🟩 🟩 🟩 ak', data);
-  if (data) {
-    render(data.arr_sites)
-  } else {
-    pullGist()
-  }
-} else {
-  // 首次使用：弹 modal，保存后再初始化
-  openSettingsModal(async function () {
+!async function () {
+  var hasSettings = await loadSystemSettings()
+  if (hasSettings) {
     updateGopageText()
     var { [storageKey()]: data } = await chrome.storage.local.get([storageKey()]);
     if (data) {
@@ -141,8 +130,18 @@ if (hasSettings) {
     } else {
       pullGist()
     }
-  })
-}
+  } else {
+    // 首次使用：弹 modal，保存后再初始化
+    openSettingsModal(async function () {
+      updateGopageText()
+      var { [storageKey()]: data } = await chrome.storage.local.get([storageKey()]);
+      if (data) {
+        render(data.arr_sites)
+      } else {
+        pullGist()
+      }
+    })
+  }
 }();
 async function pullGist() {
   //1:拉取所有模式的远程json数据
@@ -173,7 +172,7 @@ document.getElementById('btn_fetch_data_show').onclick = async function () {
   console.log('所有已存储的数据：', result);
 }
 document.getElementById('clear').onclick = async function () {
-chrome.storage.local.clear();
+  chrome.storage.local.clear();
 }
 
 // 内存中缓存的 home_data，编辑时直接改这里，保存时写回 storage
