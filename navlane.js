@@ -120,7 +120,7 @@ function render(data) {
 }
 
 
-!async function () {
+!async function init() {
   var hasSettings = await loadSystemSettings()
   if (hasSettings) {
     updateGopageText()
